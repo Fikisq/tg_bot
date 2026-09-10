@@ -1,0 +1,108 @@
+/* Главная: карточки активных задач + блок «Решено» */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    background: var(--surface-hover);
+}
+
+.card--error {
+    border-color: rgba(239, 68, 68, 0.45);
+}
+
+.card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.card__date {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.card__domain {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    word-break: break-all;
+}
+
+.card__sender {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.card__message {
+    font-size: 0.85rem;
+    color: var(--status-error);
+    background: rgba(239, 68, 68, 0.08);
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+
+.card__url {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card__url:hover {
+    color: var(--accent);
+}
+
+/* Блок «Решено» */
+.resolved {
+    margin-top: 36px;
+}
+
+.resolved__title {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+}
+
+.resolved__list {
+    list-style: none;
+}
+
+.resolved__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: var(--surface);
+}
+
+.resolved__domain {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.resolved__date {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
