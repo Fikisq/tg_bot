@@ -1,4 +1,8 @@
-__pycache__/
-*.pyc
+.venv/
 .env
-logs.log
+test_json_files/
+logs*.log*
+data/*.json
+.idea/
+__pycache__/
+.DS_Store
