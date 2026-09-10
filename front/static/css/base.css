@@ -1,0 +1,130 @@
+/* Общие токены, reset, шапка, бейджи статусов */
+:root {
+    --bg: #0f1115;
+    --surface: #171a21;
+    --surface-hover: #1d212b;
+    --border: #262b36;
+    --text: #e5e7eb;
+    --text-muted: #9aa1ad;
+    --accent: #3b82f6;
+    --status-in-progress: #3b82f6;
+    --status-error: #ef4444;
+    --status-resolved: #22c55e;
+    --radius: 12px;
+    --font-main: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-main);
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Шапка */
+.site-header {
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.site-header__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.site-header__brand {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.site-header__admin-link {
+    color: var(--accent);
+    margin-left: 12px;
+}
+
+.site-header__admin-link:hover {
+    text-decoration: underline;
+}
+
+.site-header__counts {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.count-pill {
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: var(--bg);
+}
+
+.count-pill--in_progress { color: var(--status-in-progress); border-color: var(--status-in-progress); }
+.count-pill--error       { color: var(--status-error);       border-color: var(--status-error); }
+.count-pill--resolved    { color: var(--status-resolved);    border-color: var(--status-resolved); }
+
+/* Контент */
+.site-main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.empty-note {
+    color: var(--text-muted);
+    padding: 24px 0;
+}
+
+/* Бейджи статусов */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge--in_progress {
+    color: var(--status-in-progress);
+    background: rgba(59, 130, 246, 0.13);
+}
+
+.badge--error {
+    color: var(--status-error);
+    background: rgba(239, 68, 68, 0.13);
+}
+
+.badge--resolved {
+    color: var(--status-resolved);
+    background: rgba(34, 197, 94, 0.13);
+}

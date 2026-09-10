@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block styles %}<link rel="stylesheet" href="/static/css/admin.css">{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Все задачи</h1>
+
+<nav class="filters">
+    <a class="filter-pill {{ 'filter-pill--active' if not current_status else '' }}"
+       href="/admin">Все</a>
+    {% for key, label in status_labels.items() %}
+    <a class="filter-pill {{ 'filter-pill--active' if current_status == key else '' }}"
+       href="/admin?status={{ key }}">{{ label }}</a>
+    {% endfor %}
+</nav>
+
+<table class="tasks-table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Домен</th>
+        <th>Отправитель</th>
+        <th>Статус</th>
+        <th>Создана</th>
+        <th>Обновлена</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for task in tasks %}
+    <tr>
+        <td class="tasks-table__id">{{ task.id }}</td>
+        <td>
+            <span class="tasks-table__domain">{{ task.domain }}</span>
+            {% if task.message %}
+            <span class="tasks-table__message" title="{{ task.message }}">{{ task.message }}</span>
+            {% endif %}
+        </td>
+        <td>{{ task.sender }}</td>
+        <td><span class="badge badge--{{ task.status }}">{{ status_labels[task.status] }}</span></td>
+        <td>{{ task.created_at[:16].replace("T", " ") }}</td>
+        <td>{{ task.updated_at[:16].replace("T", " ") }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="6" class="empty-note">Задач нет.</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

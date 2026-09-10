@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Домены на починку{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+<header class="site-header">
+    <div class="site-header__inner">
+        <a href="/" class="site-header__brand">Домены на починку</a>
+        {% if counts %}
+        <nav class="site-header__counts">
+            <span class="count-pill">Всего: {{ counts.total }}</span>
+            <span class="count-pill count-pill--in_progress">В работе: {{ counts.in_progress }}</span>
+            <span class="count-pill count-pill--error">Ошибка: {{ counts.error }}</span>
+            <span class="count-pill count-pill--resolved">Решено: {{ counts.resolved }}</span>
+            <a href="/admin" class="site-header__admin-link">Админка</a>
+        </nav>
+        {% endif %}
+    </div>
+</header>
+<main class="site-main">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

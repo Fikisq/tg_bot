@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block styles %}<link rel="stylesheet" href="/static/css/index.css">{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Текущие задачи</h1>
+
+{% if active_tasks %}
+<div class="cards">
+    {% for task in active_tasks %}
+    <article class="card card--{{ task.status }}">
+        <div class="card__top">
+            <span class="badge badge--{{ task.status }}">{{ status_labels[task.status] }}</span>
+            <time class="card__date" datetime="{{ task.updated_at }}">{{ task.updated_at[:10] }}</time>
+        </div>
+        <h2 class="card__domain">{{ task.domain }}</h2>
+        <p class="card__sender">{{ task.sender }}</p>
+        {% if task.status == "error" and task.message %}
+        <p class="card__message">{{ task.message }}</p>
+        {% endif %}
+        <a class="card__url" href="{{ task.url }}" target="_blank" rel="noopener"
+           title="{{ task.url }}">{{ task.url }}</a>
+    </article>
+    {% endfor %}
+</div>
+{% else %}
+<p class="empty-note">Активных задач нет — всё починено или пока пусто.</p>
+{% endif %}
+
+{% if resolved_tasks %}
+<section class="resolved">
+    <h2 class="resolved__title">Решено</h2>
+    <ul class="resolved__list">
+        {% for task in resolved_tasks %}
+        <li class="resolved__item">
+            <span class="resolved__domain">{{ task.domain }}</span>
+            <time class="resolved__date">{{ task.updated_at[:10] }}</time>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,73 @@
+/* Админка: фильтры по статусам и таблица задач */
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.filter-pill {
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--surface);
+}
+
+.filter-pill:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.filter-pill--active {
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tasks-table th,
+.tasks-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+.tasks-table th {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.tasks-table tbody tr:hover {
+    background: var(--surface);
+}
+
+.tasks-table__id {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.tasks-table__domain {
+    font-family: var(--font-mono);
+    word-break: break-all;
+}
+
+.tasks-table__message {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--status-error);
+    max-width: 360px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
